@@ -14,7 +14,7 @@ class App extends Component {
     console.log("After State", this.props.store.getState());
   }
   render() {
-    const movies = this.props.store.getState();
+    const { list } = this.props.store.getState();
     return (
       <div className="App">
         <NavBar />
@@ -24,7 +24,7 @@ class App extends Component {
             <div className="tab">Favourites</div>
           </div>
           <div className="list">
-            {movies.map((movie, index) => (
+            {list.map((movie, index) => (
               <MovieCard key={`movies-${index}`} movie={movie} />
             ))}
           </div>
