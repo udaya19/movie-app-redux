@@ -13,8 +13,17 @@ class App extends Component {
     store.dispatch(addMovies(data));
     console.log("After State", this.props.store.getState());
   }
+  isFavouriteMovie = (movie) => {
+    const { favourites } = this.props.store.getState();
+    const index = favourites.indexOf(movie);
+    if (index !== -1) {
+      return true;
+    }
+    return false;
+  };
   render() {
     const { list } = this.props.store.getState();
+    const store = this.props.store;
     return (
       <div className="App">
         <NavBar />
@@ -25,7 +34,13 @@ class App extends Component {
           </div>
           <div className="list">
             {list.map((movie, index) => (
-              <MovieCard key={`movies-${index}`} movie={movie} />
+              <MovieCard
+                key={`movies-${index}`}
+                dispatch={this.props.store.dispatch}
+                movie={movie}
+                store={store}
+                isFavouriteMovie={this.isFavouriteMovie(movie)}
+              />
             ))}
           </div>
         </div>
