@@ -37,7 +37,7 @@ class MovieCard extends Component {
             {isFavouriteMovie ? (
               <button
                 onClick={this.handleUnFavouriteClick}
-                className="favourite-btn"
+                className="unfavourite-btn "
               >
                 Unfavourite
               </button>
